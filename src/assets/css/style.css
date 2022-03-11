@@ -15,3 +15,9 @@
     src: url(../fonts/IRANSansWeb_Medium.woff);
     font-weight: 500;
 }
+
+body {
+    background-color: #f5f8fc !important;
+    width: 100%;
+    direction: rtl;
+}

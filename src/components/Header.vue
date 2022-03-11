@@ -1,39 +1,64 @@
 <template>
     <div id="Header">
-        <picture>
-            <source  class="mt-0" media="(min-width:800px)" srcset="../assets/image/header/header.png">
-            <img id="img" src="../assets/image/header/header1.png" alt="Header">
-        </picture>
-        <!--<div class="btn-box">
-                <button class="btn scroll-to-reg btn-lg" id="submit-2">
-                    <a href="">همین الان میخوام خوش اندام بشم</a>
-                </button>
-        </div>-->
+        <div id="Header">
+            <img src="../assets/images/Header/1.png" alt="img">
+            <img class="image" src="../assets/images/Header/loader-stars.jpg">
+            <img class="img" src="../assets/images/Header/small-rocket.png">
+            <button @click="scrollToTop" class="btn">
+             ثبت نام در رژیم
+            </button>
+        </div>
     </div>
 </template>
 <script>
-
+export default {
+    methods: {
+        scrollToTop() {
+            window.scrollTo(0,2370);
+        },
+    }
+}
 </script>
 <style scoped>
+#Header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+.img {
+    animation-timing-function: ease-out;
+}
+@keyframes mymove {
+from {bottom: 200px;}
+to {bottom: 800px;}
+}
+.img {
+    width: 55px;
+    position: absolute;
+    bottom: 25%;
+    left: 45%;
+    animation: mymove 5s infinite;
+}
+.image {
+    border-radius: 50%;
+    width: 110px;
+    position: absolute;
+    bottom: 25%;
+    left: 38%;
+}
 img {
     width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-    
+    margin-bottom: 30px;
 }
 .btn {
-    border-radius: 20px;
-    font-size: 14px;
-    padding: 10px 30px;
-    position: absolute;
-    top: 69%;
-    right: 23%;
-    background-color: hsl(33.2, 100%, 63.1%);
-}
-
-.btn a {
-    text-decoration: none;
+    padding: 10px 110px;
+    background-color: hsl(120, 45.8%, 47.1%);
+    border: none;
+    border-radius: 10px;
     color: white;
+    font-size: 17px;
 }
 </style>
