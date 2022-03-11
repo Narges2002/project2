@@ -26,7 +26,7 @@
         </svg>
         </button>
         <input :class="{'is-valid':!valid,'is-invalid':valid}" ref="input1" maxlength="11"
-               @input="phoneNumberChecker($event.target.value)">
+              @input="phoneNumberChecker($event.target.value)">
       </div>
       <div class="mt-2" v-if="numberEM">{{ numberEM }}</div>
     </div>
@@ -46,7 +46,7 @@ export default {
       valid: false,
       numberEM: '',
       loading: false,
-      response: null
+      response: false
     }
   },
   methods: {
@@ -72,13 +72,12 @@ export default {
         "mobile": this.number
       })
           .then((response) => {
-            console.log(response)
+            this.response = true
             this.loading = false
           })
           .catch((error) => {
             console.log(error)
             this.loading = false
-
           })
     },
   }
