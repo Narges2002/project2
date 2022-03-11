@@ -72,11 +72,14 @@ export default {
         "mobile": this.number
       })
           .then((response) => {
-            this.response = true
+            // if(!response.data.error){
+              this.response = true
+            // }
             this.loading = false
           })
           .catch((error) => {
             console.log(error)
+            // وقتی توکن ست شد خط زیری پاک بشه 
             this.response = true
             this.loading = false
           })
