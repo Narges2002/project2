@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     phoneNumberChecker(phoneNumber) {
-      if (/09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}/.test(phoneNumber)) {
+      if (/^(\+98|0098|98|0)?9\d{9}$/.test(phoneNumber)) {
         this.number = phoneNumber
         this.numberEM = ""
         this.valid = true
