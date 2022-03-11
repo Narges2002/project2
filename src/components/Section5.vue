@@ -10,12 +10,13 @@
             <div class="possition">
                 <h3>دریافت مشاوره‌ی رایگان</h3>
                 <p>برای ثبت‌نام یا دریافت مشاوره رایگان، شماره‌ واتساپ تو ثبت کن تا کارشناس‌های برنافیت بهت پیام بدن</p>
-                <span @click="postNumber(number)">ثبت</span>
+                <span @click="postNumber(phone_number)">ثبت</span>
+                <label>09</label>
             </div>
             <div class="CallNumber">
                 <input
-                v-model="number"
-                @input="addNumber"
+                v-model="phone_number"
+                @input="click"
                 :class="{
                     'is-valid':numberE===false,
                     'is-invalid':numberE===true
@@ -37,11 +38,16 @@ import axios from 'axios'
                 number:'',
                 numberE: null,
                 numberEM: null,
+                phone_number: null,
             }
         },
         methods: { 
+            click() {
+                this.addNumber()
+                this.enforcePhoneFormat()
+            },
             addNumber() {
-                if (this.number.length < 11) {
+                if (this.phone_number.length < 11) {
                 this.numberE = true
                 this.numberEM = "شماره همراه خود را بدرستی وارد کنید."
                 } else {
@@ -49,7 +55,15 @@ import axios from 'axios'
                 this.numberEM = ''
                 }
             },
-            postNumber() {
+            enforcePhoneFormat() {
+                let x = this.phone_number
+                .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+
+                this.phone_number = !x[2]
+                ? x[1]
+                : + x[1]  + x[2] + (x[3] ? + x[3] : "");
+            },
+            postNumber(phone_number) {
                 console.log('click')
                 axios.post("https://crm.bornafit.ir/api/getnumber", {
                 headers: {
@@ -58,7 +72,7 @@ import axios from 'axios'
                 },
 	                "repositoty": 1,
                     "topic": 31,
-                    "mobile": `${number}`
+                    "mobile": `09${phone_number}`
                 })      
                 .then((response) => {
     
@@ -167,5 +181,12 @@ import axios from 'axios'
 }
 span:hover {
     background-color: rgb(192, 188, 188);
+}
+label {
+    font-size: 19px;
+    position: absolute;
+    bottom: -62%;
+    left: 27%;
+    color: black;
 }
 </style>

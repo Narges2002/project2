@@ -12,7 +12,6 @@
 <style scoped>
 #Section5 {
     text-align: center;
-    margin-bottom: 30px;
 }
 .text {
     position: relative;
